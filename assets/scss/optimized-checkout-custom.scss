@@ -2,7 +2,12 @@
 // Stencil Checkout - Customize the Optimized Single-Page Checkout experience
 // =============================================================================
 
+// Logo
 .checkoutHeader-logo {
   max-width: 160px;
 }
 
+// Hide sign out button
+button[data-test="sign-out-link"] {
+  display: none;
+}
