@@ -30,7 +30,7 @@
             appDivElement.innerHTML = `<div class='nosaint-not-authorized'>
                 <h1>Not authorized</h1>
                 <p>Please sign in your account to checkout.</p>
-                <a href="https://staging.nosaint.co/login">Click here to sign in your account</a>
+                <a href="https://staging.nosaint.co/checkout">Click here to sign in your account</a>
             </div>`;
                 
         }
@@ -42,7 +42,7 @@
         if (!customer || customer.isGuest) {
             hideCheckout();
         }
-        window.location.href = "https://staging.nosaint.co/login";
+        window.location.href = "https://staging.nosaint.co/checkout";
     }    
 
     initNoSaintCustomCheckout();
