@@ -30,7 +30,7 @@
             appDivElement.innerHTML = `<div class='nosaint-not-authorized'>
                 <h1>Not authorized</h1>
                 <p>Please sign in your account to checkout.</p>
-                <a href="https://nosaint.vercel.app/login">Click here to sign in your account</a>
+                <a href="https://staging.nosaint.co/login">Click here to sign in your account</a>
             </div>`;
                 
         }
@@ -40,9 +40,9 @@
         await initCheckoutSdk();
         const customer = window.state.data.getCustomer();
         if (!customer || customer.isGuest) {
-            // hideCheckout();
+            hideCheckout();
         }
-        // window.location = "https://nosaint.vercel.app/";
+        window.location.href = "https://staging.nosaint.co/login";
     }    
 
     initNoSaintCustomCheckout();
