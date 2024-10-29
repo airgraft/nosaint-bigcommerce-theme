@@ -7,10 +7,6 @@
     window.language = {{{langJson 'optimized_checkout'}}};
 </script>
 
-<script>
-    console.debug("order_id: {{ order.order_id }}");
-</script>
-
 {{{head.scripts}}}
 
 {{/partial}}
@@ -29,6 +25,10 @@
             </a>
         </h2>
     </div>
+    <div id="order-details" data-order-id="{{ order.order_id }}"></div>
+    <script>
+        console.debug("order_id: {{ order.order_id }}");
+    </script>
 </header>
 
 {{{ checkout.order_confirmation_content }}}

@@ -40,9 +40,9 @@
         await initCheckoutSdk();
         const customer = window.state.data.getCustomer();
         if (!customer || customer.isGuest) {
-            hideCheckout();
+            window.location.href = "https://staging.nosaint.co/checkout";
         }
-        window.location.href = "https://staging.nosaint.co/checkout";
+        
     }    
 
     initNoSaintCustomCheckout();
