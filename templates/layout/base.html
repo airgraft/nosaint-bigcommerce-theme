@@ -11,6 +11,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <script>
+            window.location.href = document.referrer || 'https://staging.nosaint.co';
+        </script>
+
+        <script>
             {{!-- Change document class from no-js to js so we can detect this in css --}}
             document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
         </script>
@@ -52,8 +56,8 @@
         <svg data-src="{{cdn 'img/icon-sprite.svg'}}" class="icons-svg-sprite"></svg>
 
         {{> components/common/header }}
-        {{> components/common/body }}
-        {{> components/common/footer }}
+        <!-- {{> components/common/body }} -->
+        <!-- {{> components/common/footer }} -->
 
         <script>window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";</script>
         <script>

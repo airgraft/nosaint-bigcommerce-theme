@@ -2,10 +2,78 @@
 // Stencil Checkout - Customize the Optimized Single-Page Checkout experience
 // =============================================================================
 
-// Logo
-.checkoutHeader-logo {
-  max-width: 160px;
+$screen-large: 1025px;
+$screen-medium: 769px;
+$screen-small: 641px;
+
+// Base colors
+$nosaint-color-transparent: transparent;
+$nosaint-color-white: #FFFFFF;
+$nosaint-color-black: #222222;
+
+$nosaint-color-gray-25: #F9F9F9;
+$nosaint-color-gray-50: #F6F6F6;
+$nosaint-color-gray-100: #E7E7E7;
+$nosaint-color-gray-200: #D1D1D1;
+$nosaint-color-gray-300: #B0B0B0;
+$nosaint-color-gray-400: #888888;
+$nosaint-color-gray-500: #6D6D6D;
+$nosaint-color-gray-600: #5D5D5D;
+$nosaint-color-gray-700: #4F4F4F;
+$nosaint-color-gray-800: #454545;
+$nosaint-color-gray-900: #3D3D3D;
+$nosaint-color-gray-950: #222222;
+
+$nosaint-color-red: #D22F25; // Default
+$nosaint-color-red-light: #FFE7E5;
+$nosaint-color-red-dark: #A30900;
+
+$nosaint-color-green: #D3F100; // Default
+
+// =============================================================================
+// Custom fonts
+// =============================================================================
+@font-face {
+  font-family: 'SaansTRIAL';
+  src: url('https://staging.nosaint.co/fonts/SaansTRIAL/SaansTRIAL-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
 }
+
+@font-face {
+  font-family: 'SaansTRIAL';
+  src: url('https://staging.nosaint.co/fonts/SaansTRIAL/SaansTRIAL-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SaansTRIAL';
+  src: url('https://staging.nosaint.co/fonts/SaansTRIAL/SaansTRIAL-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+body,
+.optimizedCheckout-contentPrimary,
+.optimizedCheckout-headingPrimary,
+.optimizedCheckout-headingSecondary {
+  font-family: 'SaansTRIAL', sans-serif !important;
+}
+
+.optimizedCheckout-headingPrimary {
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.optimizedCheckout-headingSecondary {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+// =============================================================================
+// Authentication/User
+// =============================================================================
 
 // Hide sign out button
 button[data-test="sign-out-link"] {
@@ -15,4 +83,249 @@ button[data-test="sign-out-link"] {
 // Not authorized UI
 .nosaint-not-authorized {
   margin: 32px;
+}
+
+// =============================================================================
+// Header
+// =============================================================================
+$nosaint-header-height-mobile: 50px;
+$nosaint-header-height-desktop: 76px;
+$nosaint-header-border-thickness-mobile: 0px;
+$nosaint-header-border-thickness-desktop: 24px;
+
+body {
+  border-color: $nosaint-color-green;
+  border-style: solid;
+  border-width: 0px;
+  border-top-width: $nosaint-header-border-thickness-mobile;
+
+  @media (min-width: $screen-medium) {
+    border-top-width: $nosaint-header-border-thickness-desktop;
+  }
+}
+
+.optimizedCheckout-header {
+  min-height: $nosaint-header-height-mobile;
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  background: $nosaint-color-transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+
+  @media (min-width: $screen-medium) {
+    height: $nosaint-header-height-desktop;
+    max-width: 1280px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .checkoutHeader-content {
+    flex: 1;
+    padding: 0;
+    max-width: none;
+    border-width: 0px;
+    border-bottom: 3px solid;
+    border-color: $nosaint-color-green;
+    border-style: solid;
+    display: flex;
+    align-items: center;
+  }
+
+  .checkoutHeader-logo {
+    display: block;
+    max-width: 110px;
+
+    @media (min-width: $screen-medium) {
+      max-width: 150px;
+    }
+  }
+}
+
+// =============================================================================
+// Layout
+// =============================================================================
+
+.layout {
+  max-width: 1280px;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  @media (min-width: $screen-medium) {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+.layout-main {
+  padding: 0;
+}
+
+.checkout-step--customer {}
+
+.checkout-step {
+  padding: 1rem 0;
+}
+
+.checkout-view-header {
+  margin-bottom: 0;
+}
+
+.stepHeader {
+  padding: 1rem 0;
+}
+
+// =============================================================================
+// Order summary (sidebar)
+// =============================================================================
+.optimizedCheckout-orderSummary {
+  box-shadow: none;
+  border-radius: 0px;
+  background-color: $nosaint-color-gray-50;
+  border: 0px;
+
+  .cart {
+    margin-top: 2rem;
+  }
+
+  .optimizedCheckout-orderSummary-cartSection {
+    border-color: $nosaint-color-white;
+    border-width: 2px;
+  }
+
+  .productList-item .product-figure {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-height: 100px;
+    }
+  }
+
+  .product-title {
+    font-size: 16px;
+  }
+}
+
+.cart-priceItem--total .cart-priceItem-value {
+  font-size: 24px;
+}
+
+
+
+// =============================================================================
+// Mobile bottom sticky order bar
+// =============================================================================
+.cartDrawer {
+  margin: 0;
+
+  .cartDrawer-imageWrapper {
+    justify-content: center;
+  }
+
+  .optimizedCheckout-headingPrimary {
+    font-size: 16px;
+  }
+}
+
+// =============================================================================
+// Form
+// =============================================================================
+
+.form-field {}
+
+.form-input,
+.form-input.floating-input,
+.form-select.floating-select {
+  border: 0px;
+  border-bottom: 2px solid;
+  border-color: $nosaint-color-gray-600 !important;
+  border-radius: 0px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background: transparent;
+  height: 40px;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 600;
+
+  @media (min-width: $screen-medium) {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+.form-field .floating-label {
+  color: $nosaint-color-gray-600;
+  text-transform: capitalize;
+  left: 0;
+  font-size: 24px;
+  line-height: 1;
+  margin-bottom: 0;
+  bottom: 8px;
+  top: inherit;
+}
+
+.form-field .floating-select {
+  padding: 0;
+}
+
+.form-input::placeholder {}
+
+.form-field input:not(:placeholder-shown)+.floating-label,
+.form-field select:not(:placeholder-shown)+.floating-label {
+  opacity: 0;
+}
+
+.form-input:focus,
+.form-select:focus {
+  box-shadow: none;
+  border-color: $nosaint-color-green !important;
+  background-color: $nosaint-color-gray-50;
+}
+
+.form-input:hover,
+.form-select:hover {
+  box-shadow: none;
+}
+
+.floating-form-field {
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
+}
+
+.form-select {}
+
+// =============================================================================
+// Button
+// =============================================================================
+
+.button {
+  border-radius: 0;
+}
+
+.button--primary {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
+  background: $nosaint-color-black;
+  height: 72px;
+  width: 100%;
+  text-align: left;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.button--primary:hover {
+  color: $nosaint-color-green;
+  background: $nosaint-color-black;
 }
