@@ -1,6 +1,6 @@
 {
-  "name": "No Saint - Based on Cornerstone",
-  "version": "6.14.0",
+  "name": "No Saint",
+  "version": "Oct 29 2024 16:25:22",
   "template_engine": "handlebars_v4",
   "meta": {
     "price": 0,

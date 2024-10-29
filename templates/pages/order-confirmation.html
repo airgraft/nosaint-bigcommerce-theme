@@ -25,13 +25,16 @@
             </a>
         </h2>
     </div>
-    <div id="order-details" data-order-id="{{ order.order_id }}"></div>
-    <script>
-        console.debug("order_id: {{ order.order_id }}");
-    </script>
 </header>
 
 {{{ checkout.order_confirmation_content }}}
+
+<script type="text/javascript">
+    var orderId = "{{checkout.order.id}}";
+    if (orderId && orderId !== "") {
+        window.location.href = `https://staging.nosaint.co/orders/{{checkout.order.id}}`;
+    }
+</script>
 
 {{{ footer.scripts }}}
 
