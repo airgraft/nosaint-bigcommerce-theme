@@ -80,11 +80,6 @@ button[data-test="sign-out-link"] {
   display: none;
 }
 
-// Not authorized UI
-.nosaint-not-authorized {
-  margin: 32px;
-}
-
 // =============================================================================
 // Header
 // =============================================================================
@@ -167,7 +162,9 @@ body {
   padding: 0;
 }
 
-.checkout-step--customer {}
+.checkout-step--customer {
+  display: none;
+}
 
 .checkout-step {
   padding: 1rem 0;

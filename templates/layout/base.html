@@ -10,9 +10,11 @@
         <link href="{{ head.favicon }}" rel="shortcut icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        {{#if theme_settings.NOSAINT_URL}}
         <script>
-            window.location.href = 'https://staging.nosaint.co';
+            window.location.href = '{{theme_settings.NOSAINT_URL}}';
         </script>
+        {{/if}}
 
         <script>
             {{!-- Change document class from no-js to js so we can detect this in css --}}

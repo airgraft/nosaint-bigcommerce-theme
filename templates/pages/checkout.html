@@ -23,18 +23,6 @@
         window.service = module.createCheckoutService();
         window.state = await service.loadCheckout('{{{ checkout.id }}}');
     };
-
-    const hideCheckout = () => {
-        var appDivElement = document.getElementById("checkout-app");
-        if (appDivElement) {
-            appDivElement.innerHTML = `<div class='nosaint-not-authorized'>
-                <h1>Not authorized</h1>
-                <p>Please sign in your account to checkout.</p>
-                <a href="https://staging.nosaint.co/checkout">Click here to sign in your account</a>
-            </div>`;
-                
-        }
-    }
     
     const initNoSaintCustomCheckout = async () => {
         await initCheckoutSdk();
