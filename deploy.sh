@@ -3,50 +3,34 @@
 # Exit immediately if any command fails
 set -e
 
-# Get the current date in the format "Month Day Year"
+# Get the current date and time
 CURRENT_DATETIME=$(date +"%b %d %Y %H:%M")
 
-# Update the "version" property in package.json with the current date and time
+# Backup original secrets and config files if they exist
+for FILE in "secrets.stencil.json" "config.stencil.json"; do
+  if [ -f "$FILE" ]; then
+    cp "$FILE" "$FILE.bak"
+  fi
+done
+
+# Update the "title" property in config.json with the current date
 sed -i '' "s/\"version\": \".*\"/\"version\": \"$CURRENT_DATETIME\"/" config.json
 
-# First command setup
+# Define arrays for account configurations
+ACCESS_TOKENS=("6movuboeofd1ltpz37t471rid5ubolt" "k11ia15u54bl60el1mfyrft22yacn4e")
+STORE_URLS=("https://nosaint.mybigcommerce.com" "https://nosaint-ca.mybigcommerce.com")
 
-# Create the first secrets.stencil.json file
-cat > secrets.stencil.json <<EOL
+# Loop through each account and perform the stencil push
+for i in "${!ACCESS_TOKENS[@]}"; do
+  # Update secrets.stencil.json
+  cat > secrets.stencil.json <<EOL
 {
-  "accessToken": "6movuboeofd1ltpz37t471rid5ubolt"
+  "accessToken": "${ACCESS_TOKENS[$i]}"
 }
 EOL
 
-# Create the first config.stencil.json file
-cat > config.stencil.json <<EOL
-{
-  "customLayouts": {
-    "brand": {},
-    "category": {},
-    "page": {},
-    "product": {}
-  },
-  "normalStoreUrl": "https://nosaint.mybigcommerce.com",
-  "port": "3001",
-  "packageManager": "npm"
-}
-EOL
-
-# Run stencil push with the first version
-stencil push -a -d -c 1 -s "NoSaint (${CURRENT_DATE})"
-
-# Second command setup
-
-# Update secrets.stencil.json with the second version
-cat > secrets.stencil.json <<EOL
-{
-  "accessToken": "k11ia15u54bl60el1mfyrft22yacn4e"
-}
-EOL
-
-# Update config.stencil.json with the second version
-cat > config.stencil.json <<EOL
+  # Update config.stencil.json
+  cat > config.stencil.json <<EOL
 {
   "customLayouts": {
     "brand": {},
@@ -54,14 +38,22 @@ cat > config.stencil.json <<EOL
     "page": {},
     "product": {}
   },
-  "normalStoreUrl": "https://nosaint-ca.mybigcommerce.com",
+  "normalStoreUrl": "${STORE_URLS[$i]}",
   "port": "3001",
   "packageManager": "npm"
 }
 EOL
 
-# Run stencil push with the second version
-stencil push -a -d -c 1 -s "NoSaint (${CURRENT_DATE})"
+  # Run stencil push for the current configuration
+  stencil push -a -d -c 1 -s "NoSaint (${CURRENT_DATETIME}) - Account $((i+1))"
+done
 
-# Clean up: Remove the secrets and config files after the script is complete
+# Clean up: Remove the modified secrets and config files after the script is complete
 rm secrets.stencil.json config.stencil.json
+
+# Restore the original secrets and config files if they were backed up
+for FILE in "secrets.stencil.json" "config.stencil.json"; do
+  if [ -f "$FILE.bak" ]; then
+    mv "$FILE.bak" "$FILE"
+  fi
+done

@@ -69,10 +69,10 @@ module.exports = {
             jQuery: 'jquery',
             'window.jQuery': 'jquery',
         }),
-        new BundleAnalyzerPlugin({
-            analyzerMode: 'static',
-            openAnalyzer: false,
-        }),
+        // new BundleAnalyzerPlugin({
+        //     analyzerMode: 'static',
+        //     openAnalyzer: false,
+        // }),
     ],
     resolve: {
         fallback:  { "url": require.resolve("url/") },
