@@ -28,9 +28,8 @@
         await initCheckoutSdk();
         const customer = window.state.data.getCustomer();
         if (!customer || customer.isGuest) {
-            window.location.href = "https://staging.nosaint.co/checkout";
+            window.location.href = "{{theme_settings.NOSAINT_URL}}/checkout";
         }
-        
     }    
 
     initNoSaintCustomCheckout();

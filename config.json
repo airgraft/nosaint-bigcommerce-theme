@@ -18,7 +18,7 @@
     "Firefox ESR"
   ],
   "settings": {
-    "NOSAINT_URL": "https://staging.nosaint.co",
+    "NOSAINT_URL": "https://nosaint.co",
     "channels": [
       {
         "id": 1,
