@@ -1,4 +1,11 @@
 {{#partial "head"}}
+<script type="text/javascript">
+    var orderId = "{{checkout.order.id}}";
+    if (orderId && orderId !== "") {
+        window.location.href = `{{theme_settings.NOSAINT_URL}}/orders/{{checkout.order.id}}`;
+    }
+</script>
+
 {{{ checkout.checkout_head }}}
 {{{ stylesheet '/assets/css/optimized-checkout.css' }}}
 {{ getFontsCollection }}
@@ -27,14 +34,7 @@
     </div>
 </header>
 
-{{{ checkout.order_confirmation_content }}}
-
-<script type="text/javascript">
-    var orderId = "{{checkout.order.id}}";
-    if (orderId && orderId !== "") {
-        window.location.href = `{{theme_settings.NOSAINT_URL}}/orders/{{checkout.order.id}}`;
-    }
-</script>
+<!-- {{{ checkout.order_confirmation_content }}} -->
 
 {{{ footer.scripts }}}
 

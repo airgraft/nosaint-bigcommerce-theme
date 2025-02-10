@@ -12,7 +12,11 @@
 
         {{#if theme_settings.NOSAINT_URL}}
         <script>
-            window.location.href = '{{theme_settings.NOSAINT_URL}}';
+            if (window.location.pathname.indexOf("cart.php") > 0) {
+                window.location.href = '{{theme_settings.NOSAINT_URL}}/cart';    
+            } else {
+                window.location.href = '{{theme_settings.NOSAINT_URL}}/preorder';
+            }
         </script>
         {{/if}}
 

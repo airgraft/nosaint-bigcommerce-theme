@@ -18,21 +18,21 @@
 {{#partial "page"}}
 
 <script>
-    const initCheckoutSdk = async () => {
-        window.module = await checkoutKitLoader.load('checkout-sdk');
-        window.service = module.createCheckoutService();
-        window.state = await service.loadCheckout('{{{ checkout.id }}}');
-    };
+    // const initCheckoutSdk = async () => {
+    //     window.module = await checkoutKitLoader.load('checkout-sdk');
+    //     window.service = module.createCheckoutService();
+    //     window.state = await service.loadCheckout('{{{ checkout.id }}}');
+    // };
     
-    const initNoSaintCustomCheckout = async () => {
-        await initCheckoutSdk();
-        const customer = window.state.data.getCustomer();
-        if (!customer || customer.isGuest) {
-            window.location.href = "{{theme_settings.NOSAINT_URL}}/checkout";
-        }
-    }    
+    // const initNoSaintCustomCheckout = async () => {
+    //     await initCheckoutSdk();
+    //     const customer = window.state.data.getCustomer();
+    //     if (!customer || customer.isGuest) {
+    //         window.location.href = "{{theme_settings.NOSAINT_URL}}/checkout";
+    //     }
+    // }    
 
-    initNoSaintCustomCheckout();
+    // initNoSaintCustomCheckout();
 </script>
  
 <header class="checkoutHeader optimizedCheckout-header">
